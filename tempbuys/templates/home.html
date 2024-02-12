@@ -27,6 +27,7 @@
   <link href="static/mainhtml/assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="static/mainhtml/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="static/mainhtml/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- <link href="static/mainhtml/assets/vendor/swiper/swiper-bundle..css" rel="stylesheet"> -->
 
   <!-- Template Main CSS File -->
   <link href="static/mainhtml/assets/css/main.css" rel="stylesheet">
@@ -358,14 +359,31 @@
                 <a href="{% url 'mainapp:temp_view' n.id %}">
                   <img src="{{n.temp_img.url}}" class="menu-img img-fluid" alt="">
                 </a>
-                <h4></h4>
+                <h3><a type="submit" href="{% url 'mainapp:temp_view' n.id %}" class="preview-button btn" style="background-color:#ce1212; color:white;" ><i class='fas fa-eye' style="margin-right:7px;"></i>Preview</a></h3>
+
+                <!-- <h4></h4>
                 <p class="ingredients">
                 </p>
                 <p class="price">
-                </p>
+                </p> -->
               </div>
               {% endfor %}
             </div>
+
+            <!-- <div class="swiper-wrapper" >
+              {% for i in normal %}
+              <div class="swiper-slide" >
+                  <div class="testimonial-item" >
+                      
+                          <img src="{{i.temp_img.url}}" class="img-fluid" style="width:400px; height:230px; margin-right:20px;">
+                      <h3><a type="submit" href="{% url 'mainapp:temp_view' i.id %}" class="preview-button btn" style="background-color:#2196F3; color:white;" ><i class='fas fa-eye' style="margin-right:7px;"></i>Preview</a></h3>
+
+                  </div>
+              </div>
+              {% endfor %}
+          </div> -->
+
+
           </div>
           </div>
         </div>
