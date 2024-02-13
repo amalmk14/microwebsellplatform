@@ -320,18 +320,86 @@
               <!-- <h3>Normal Templates</h3> -->
             </div>
 
+
             <style>
               .menu-item {
                 position: relative;
                 overflow: hidden;
               }
             
-              .menu-img {
+              .menu-im {
                 transition: transform 0.3s ease-in-out;
               }
             
-              .menu-item:hover .menu-img,
-              .menu-item.touch-active .menu-img {
+              .menu-item:hover .menu-im,
+              .menu-item.touch-active .menu-im {
+                transform: scale(1.1);
+              }
+            
+              .preview-button {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                margin: 10px;
+                background-color: #ce1212;
+                color: white;
+                padding: 10px 20px;
+                text-decoration: none;
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+                pointer-events: none; /* Make the button not respond to mouse events */
+              }
+            
+              .menu-item:hover .preview-button {
+                opacity: 1;
+              }
+            </style>
+            
+            <script>
+              // Add touch event handling using JavaScript
+              document.addEventListener("DOMContentLoaded", function () {
+                var menuItems = document.querySelectorAll(".menu-item");
+            
+                menuItems.forEach(function (menuItem) {
+                  menuItem.addEventListener("touchstart", function () {
+                    this.classList.add("touch-active");
+                  });
+            
+                  menuItem.addEventListener("touchend", function () {
+                    this.classList.remove("touch-active");
+                  });
+                });
+              });
+            </script>
+            
+            <div class="row gy-5">
+              {% for n in normal %}
+              <div class="col-lg-4 menu-item">
+                <a href="{% url 'mainapp:temp_view' n.id %}">
+                  <img src="{{n.temp_img.url}}" class="menu-im img-fluid" alt="" style="width:100%; height:200px; margin-right:20px;">
+                  <a type="submit" href="{% url 'mainapp:temp_view' n.id %}" class="preview-button btn">
+                    <i class='fas fa-eye' style="margin-right:7px;"></i>Preview
+                  </a>
+                </a>
+              </div>
+              {% endfor %}
+            </div>
+            
+
+
+
+            <!-- <style>
+              .menu-item {
+                position: relative;
+                overflow: hidden;
+              }
+            
+              .menu-im {
+                transition: transform 0.3s ease-in-out;
+              }
+            
+              .menu-item:hover .menu-im,
+              .menu-item.touch-active .menu-im {
                 transform: scale(1.1);
               }
             </style>
@@ -357,18 +425,12 @@
           {% for n in normal %}
               <div class="col-lg-4 menu-item">
                 <a href="{% url 'mainapp:temp_view' n.id %}">
-                  <img src="{{n.temp_img.url}}" class="menu-img img-fluid" alt="">
+                  <img src="{{n.temp_img.url}}" class="menu-im img-fluid" alt="" style="width:100%; height:200px; margin-right:20px;">
                 </a>
                 <h3><a type="submit" href="{% url 'mainapp:temp_view' n.id %}" class="preview-button btn" style="background-color:#ce1212; color:white;" ><i class='fas fa-eye' style="margin-right:7px;"></i>Preview</a></h3>
-
-                <!-- <h4></h4>
-                <p class="ingredients">
-                </p>
-                <p class="price">
-                </p> -->
               </div>
               {% endfor %}
-            </div>
+            </div> -->
 
             <!-- <div class="swiper-wrapper" >
               {% for i in normal %}
@@ -483,7 +545,7 @@
         </div>
 
       </div>
-    </section><!-- End Gallery Section -->
+    </section>
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact" style="background-color:#f4f4f4">

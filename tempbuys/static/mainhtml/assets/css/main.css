@@ -894,10 +894,10 @@ section {
   text-align-last: center;
 }
 
-.menu .tab-content .menu-item .menu-img {
+/* .menu .tab-content .menu-item .menu-img {
   padding: 0 60px;
   margin-bottom: 15px;
-}
+} */
 
 .menu .tab-content .menu-item h4 {
   font-size: 22px;
